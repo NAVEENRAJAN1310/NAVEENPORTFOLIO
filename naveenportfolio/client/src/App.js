@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/navbar/Navbar';
+import { useDime } from './components/context/Context';
 
 function App() {
+
+  const dimensions = useDime();
+
+  const appScroll = (e)=>{
+    // console.log(e);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <div id='app' onScroll={appScroll}>
+        {console.log(dimensions)}
+      </div>
+      <div className='sample one'></div>
+        <div className='sample two'></div>
+        <div className='sample three'></div>
+    </>
+
   );
 }
 

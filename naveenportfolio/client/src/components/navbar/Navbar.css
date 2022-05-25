@@ -1,0 +1,7 @@
+#navbar{
+    width: 100%;
+    height: 7rem;
+    background-color: aquamarine;
+    position: sticky;
+    top: 0px;
+}
