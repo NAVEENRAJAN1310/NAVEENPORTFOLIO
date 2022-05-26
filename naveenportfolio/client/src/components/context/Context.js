@@ -7,38 +7,57 @@ export const useDime = ()=>{
     return useContext(ContextProvider);        
 }
 
+const scrollDirection= {
+    up : "up",
+    down : "down"
+  }
+
 
 const Context = (props) => {
+    const threshold = 100;
+    const [scrollDir, setScrollDir] = useState(scrollDirection.up);
+    
+    // const previousScroll = useRef(0);
 
-    const [scroll, setScroll] = useState({scrolltoTop: "false",scrolltoBottom: "false"});
+    
 
     useEffect(()=>{
 
-        const initialY = window.pageYOffset;
-        const getScrollValues = (e)=>{
-            setScroll((prev)=>{
-                console.log("initial "+ initialY)
-                const scrollY = window.pageYOffset;
-                const scrollX = window.pageXOffset;
-                console.log("scrollY "+ scrollY)
-                if(initialY > scrollY) {
-                      return {...prev,scrolltoTop: "true"}  
-                }
+        let previousScrollYPosition = window.scrollY;
 
-                return {...prev}
-            })
-        }
+    const scrolledMoreThanThreshold = (currentScrollYPosition) =>
+      Math.abs(currentScrollYPosition - previousScrollYPosition) > threshold;
+        
+        const isScrollingUp = (currentScrollYPosition) =>
+        currentScrollYPosition > previousScrollYPosition &&
+        !(previousScrollYPosition > 0 && currentScrollYPosition === 0) &&
+        !(currentScrollYPosition > 0 && previousScrollYPosition === 0);
 
-        window.addEventListener("scroll",getScrollValues);
 
-        return(()=>{
-            window.removeEventListener("scroll",getScrollValues);
-        })
+        const updateScrollDirection = () => {
+            const currentScrollYPosition = window.scrollY;
+      
+            if (scrolledMoreThanThreshold(currentScrollYPosition)) {
+              const newScrollDirection = isScrollingUp(currentScrollYPosition)
+                ? scrollDirection.down
+                : scrollDirection.up;
+              setScrollDir(newScrollDirection);
+              previousScrollYPosition =
+                currentScrollYPosition > 0 ? currentScrollYPosition : 0;
+            }
+          };
+    
+    const onScroll = () => window.requestAnimationFrame(updateScrollDirection);
 
-    },[scroll,setScroll])
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+
+    },[])
+
 
   return (
-    <ContextProvider.Provider value={{scrollVal : scroll, setScrollVal : setScroll}}>
+    <ContextProvider.Provider value={{scrState : scrollDir}}>
             {props.children}
     </ContextProvider.Provider>
   )

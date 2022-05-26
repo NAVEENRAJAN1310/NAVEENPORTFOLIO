@@ -6,12 +6,15 @@ const Navbar = () => {
 
 const dimensions = useDime();
 
+  const styles = {
+    opacity : dimensions.scrState === "up" ? 1 : 0
+  }
+
   return (
     <>
-        <section id='navbar'>
+        <section id='navbar' style={styles}>
             <div className='logo'></div>
-            <div>{dimensions.scrollVal.scrolltoTop}</div>
-            <div>{dimensions.scrollVal.scrolltoBottom}</div>
+            {/* <h1>{dimensions.scrState}</h1> */}
         </section>
     </>
   )
