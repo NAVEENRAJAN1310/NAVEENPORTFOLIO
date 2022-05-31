@@ -11,6 +11,11 @@ const dimensions = useDime();
   const styles = {
     opacity : dimensions.scrState === "up" ? 1 : 0,
   }
+  const menuStyles = {
+    display : useWinWidthLesser(1050) && "block",
+    backgroundColor : useWinWidthLesser(1050) && "red",
+    position : useWinWidthLesser(1050) && "relative"
+  }
 
   return (
     <>
@@ -18,13 +23,25 @@ const dimensions = useDime();
             <div className='logo'>
             <img src={mainLogo} alt="N"/>
             </div>
-            {useWinWidthGreat(1050) && <div className='menus'>
-                <MenuItem value={"About"}/>
-                <MenuItem value={"Experience"}/>
-                <MenuItem value={"Work"}/>
-                <MenuItem value={"Contact"}/>
+            <div className='menus' style={menuStyles}>
+              
+              {useWinWidthGreat(1050) ? 
+                <>
+                <MenuItem value={"About"} delay={'100'}/>
+                <MenuItem value={"Experience"} delay={'200'}/>
+                <MenuItem value={"Work"} delay={'300'}/>
+                <MenuItem value={"Contact"} delay={'400'}/>
                 <button className='resumeBtn'>Resume</button>
+              </> :
+              <div className='menuIcon'>
+                <div className='lines one'></div>
+                <div className='lines two'></div>
+                <div className='lines three'></div> 
             </div>}
+            </div>
+            
+            
+          
         </section>
     </>
   )
