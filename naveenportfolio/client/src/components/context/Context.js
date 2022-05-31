@@ -21,6 +21,11 @@ export const useWinWidthLesser = (userWidth) => {
   return false;
 }
 
+export const useSetScroll = (setValue) => {
+  const contextProvider = useContext(ContextProvider);
+  contextProvider.setScrollngAnime(setValue);
+}
+
 const scrollDirection = {
   up: "up",
   down: "down"
@@ -52,6 +57,8 @@ useEffect(()=>{
   const threshold = 0;
   const [scrollDir, setScrollDir] = useState(scrollDirection.up);
 
+  const[isScrlling, setScrolling] = useState(true);
+
   useEffect(() => {
 
     let previousScrollYPosition = window.scrollY;
@@ -66,7 +73,12 @@ useEffect(()=>{
       !(currentScrollYPosition > 0 && previousScrollYPosition === 0);
 
 
-    const updateScrollDirection = () => {
+    const updateScrollDirection = (e) => {
+
+      console.log(isScrlling)
+      if (isScrlling) {
+        window.scrollTo(0, 0);
+      } else {
       const currentScrollYPosition = window.scrollY;
       if (scrolledMoreThanThreshold(currentScrollYPosition)) {
         const newScrollDirection = isScrollingUp(currentScrollYPosition)
@@ -76,6 +88,7 @@ useEffect(()=>{
         previousScrollYPosition =
           currentScrollYPosition > 0 ? currentScrollYPosition : 0;
       }
+    }
     };
 
     const onScroll = () => window.requestAnimationFrame(updateScrollDirection);
@@ -84,11 +97,11 @@ useEffect(()=>{
 
     return () => window.removeEventListener("scroll", onScroll);
 
-  }, [])
+  }, [isScrlling])
 
 
   return (
-    <ContextProvider.Provider value={{ scrState: scrollDir , windowPos: positions}}>
+    <ContextProvider.Provider value={{ scrState: scrollDir , windowPos: positions, setScrollngAnime : setScrolling}}>
       {props.children}
     </ContextProvider.Provider>
   )

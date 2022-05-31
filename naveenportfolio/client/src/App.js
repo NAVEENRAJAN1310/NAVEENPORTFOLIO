@@ -9,9 +9,9 @@ function App() {
     <>
       <Navbar />
       <div id='app'>
-      <div className='sample one'></div>
-      <div className='sample two'></div>
-      <div className='sample three'></div>
+      <div className='sample one' id="about"></div>
+      <div className='sample two' id="experience"></div>
+      <div className='sample three' id="work"></div>
       </div>
       
     </>

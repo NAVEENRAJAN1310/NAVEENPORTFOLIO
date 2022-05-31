@@ -4,7 +4,8 @@ import "./MenuItem.css"
 const MenuItem = (props) => {
 
     const styles = {
-        animationDelay : `${props.delay}ms`
+        animationDelay : `${props.delay}ms`,
+        animationName : `${props.animeName === "none" ?props.animeName :  "menuLate" }`
     }
 
     return (
