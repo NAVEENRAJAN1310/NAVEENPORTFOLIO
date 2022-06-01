@@ -4,12 +4,15 @@ import { useDime, useWinWidthGreat, useWinWidthLesser,useSetScroll } from '../co
 import mainLogo from "./nfavicon.svg"
 import MenuItem from './MenuItems/MenuItem'
 import MenuOverLay from './menuoverlay/MenuOverLay'
+import { menuIconStyle } from './NavBarStyles'
+
+
 
 const Navbar = () => {
 
   const dimensions = useDime();
 
-  const [media,setMedia] = useState(dimensions.mediaState);
+  console.log(dimensions.windowPos.wwidth);
 
   const styles = {
     opacity: dimensions.scrState === "up" ? 1 : 0,
@@ -18,14 +21,6 @@ const Navbar = () => {
   const menuStyles = {
     display: useWinWidthLesser(1050) && "block",
     position: useWinWidthLesser(1050) && "relative"
-  }
-
-  const menuIconStyles = {
-    width : useWinWidthLesser(1050) && "40px",
-    height : useWinWidthLesser(1050) && "40px",
-    transform : useWinWidthLesser(1050) && "translateY(-50%)",
-    top : useWinWidthLesser(1050) && "50%",
-    backgroundColor : media === "first" ? "red" : media === "second" ? "green" : media === "third" ? "yellow" : ""
   }
 
   const closeFromChild = (value) => {
@@ -56,7 +51,7 @@ const Navbar = () => {
               <MenuItem value={"Contact"} delay={'400'} />
               <button className='resumeBtn'>Resume</button>
             </> :
-            <div className='menuIcon' onClick={menuIconClick} style={menuIconStyles}>
+            <div className='menuIcon' onClick={menuIconClick} style={menuIconStyle(dimensions.windowPos.wwidth)}>
               <div className='lines one'></div>
               <div className='lines two'></div>
               <div className='lines three'></div>
@@ -72,3 +67,5 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+
