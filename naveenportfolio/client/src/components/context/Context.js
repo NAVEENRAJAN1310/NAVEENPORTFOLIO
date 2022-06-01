@@ -21,6 +21,15 @@ export const useWinWidthLesser = (userWidth) => {
   return false;
 }
 
+// export const mediaQuery = (userWidth1,userWidth2=0,userWidth3=0) => {
+//   const contextProvider = useContext(ContextProvider);
+//   const windowWidth = contextProvider.windowPos.wwidth;
+//   if(windowWidth < userWidth1 && windowWidth >= userWidth2) return "first";
+//   if(windowWidth < userWidth2 && windowWidth >= userWidth3) return "second";
+//   if(windowWidth < userWidth3 ) return "third";
+// }
+
+
 export const useSetScroll = (setValue) => {
   const contextProvider = useContext(ContextProvider);
   contextProvider.setScrollngAnime(setValue);
@@ -39,12 +48,21 @@ const Context = (props) => {
     wheight: window.innerHeight
 })
 
+const [media, setMedia] = useState("");
+
 useEffect(()=>{
   const handleResize = ()=> {
       setPositions({
           wwidth : window.innerWidth,
           wheight: window.innerHeight
       })
+      if(window.innerWidth < 420 && window.innerWidth >= 0) {
+        setMedia("third")
+      } else if (window.innerWidth < 820 && window.innerWidth >= 420) {
+        setMedia("second")
+      } else if (window.innerWidth < 1050 && window.innerWidth >= 820) {
+        setMedia("first")
+      }
   }
   window.addEventListener("resize",handleResize);
   return(()=>{
@@ -101,7 +119,7 @@ useEffect(()=>{
 
 
   return (
-    <ContextProvider.Provider value={{ scrState: scrollDir , windowPos: positions, setScrollngAnime : setScrolling}}>
+    <ContextProvider.Provider value={{ scrState: scrollDir , windowPos: positions, setScrollngAnime : setScrolling,  mediaState : media}}>
       {props.children}
     </ContextProvider.Provider>
   )
