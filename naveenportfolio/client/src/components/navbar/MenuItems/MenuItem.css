@@ -14,7 +14,8 @@ animation-fill-mode: forwards;
 .menuItem a{
     font-size: 1.5rem;
     text-decoration: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+    font-family: 'Epilogue', sans-serif;
 }
 
 @keyframes menuLate {

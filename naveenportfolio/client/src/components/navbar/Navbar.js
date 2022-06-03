@@ -4,7 +4,7 @@ import { useDime, useWinWidthGreat, useWinWidthLesser,useSetScroll } from '../co
 import mainLogo from "./nfavicon.svg"
 import MenuItem from './MenuItems/MenuItem'
 import MenuOverLay from './menuoverlay/MenuOverLay'
-import { menuIconStyle } from './NavBarStyles'
+import { navBarStyle, menuIconStyle } from './NavBarStyles'
 
 
 
@@ -16,11 +16,10 @@ const Navbar = () => {
 
   const styles = {
     opacity: dimensions.scrState === "up" ? 1 : 0,
-    height: useWinWidthLesser(1050) && "80px",
   }
   const menuStyles = {
-    display: useWinWidthLesser(1050) && "block",
-    position: useWinWidthLesser(1050) && "relative"
+    display: useWinWidthLesser(820) && "block",
+    position: useWinWidthLesser(820) && "relative"
   }
 
   const closeFromChild = (value) => {
@@ -37,13 +36,15 @@ const Navbar = () => {
 
   return (
     <>
-      <section id='navbar' style={styles}>
-        <div className='logo'>
-          <img src={mainLogo} alt="N" />
+      <section id='navbar' style={{...navBarStyle(dimensions.windowPos.wwidth),...styles}}>
+        <div className='logoContainer'>
+          <div className='logo'>
+            <img src={mainLogo} alt="N" />
+          </div>
         </div>
         <div className='menus' style={menuStyles}>
 
-          {useWinWidthGreat(1050) ?
+          {useWinWidthGreat(820) ?
             <>
               <MenuItem value={"About"} delay={'100'} />
               <MenuItem value={"Experience"} delay={'200'} />

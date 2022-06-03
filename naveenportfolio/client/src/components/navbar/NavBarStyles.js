@@ -21,3 +21,21 @@ export const menuIconStyle = (currWidth) => {
         backgroundColor: "red"
     }
 }
+
+export const navBarStyle = (currWidth) => {
+    if (currWidth <= 320) return {
+        
+    }
+    if (currWidth <= 480) return {
+        
+    }
+    if (currWidth <= 768) return {
+        
+    }
+    if (currWidth <= 1024) return {
+        
+    }
+    if (currWidth <= 1200) return {
+        
+    }
+}
