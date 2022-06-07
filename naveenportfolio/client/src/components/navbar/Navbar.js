@@ -4,15 +4,13 @@ import { useDime, useWinWidthGreat, useWinWidthLesser,useSetScroll } from '../co
 import mainLogo from "./nfavicon.svg"
 import MenuItem from './MenuItems/MenuItem'
 import MenuOverLay from './menuoverlay/MenuOverLay'
-import { navBarStyle, menuIconStyle } from './NavBarStyles'
+import { navBarStyle, menuIconStyle, logoContainerStyle, logoStyle, menusStyle,menuItemStyleContact } from './NavBarStyles'
 
 
 
 const Navbar = () => {
 
   const dimensions = useDime();
-
-  console.log(dimensions.windowPos.wwidth);
 
   const styles = {
     opacity: dimensions.scrState === "up" ? 1 : 0,
@@ -37,19 +35,19 @@ const Navbar = () => {
   return (
     <>
       <section id='navbar' style={{...navBarStyle(dimensions.windowPos.wwidth),...styles}}>
-        <div className='logoContainer'>
-          <div className='logo'>
+        <div className='logoContainer' style={logoContainerStyle(dimensions.windowPos.wwidth)}>
+          <div className='logo' style={logoStyle(dimensions.windowPos.wwidth)}>
             <img src={mainLogo} alt="N" />
           </div>
         </div>
-        <div className='menus' style={menuStyles}>
-
+        <div id="menuContainer">
+        <div className='menus' style={{...menuStyles,...menusStyle(dimensions.windowPos.wwidth)}}>
           {useWinWidthGreat(820) ?
             <>
               <MenuItem value={"About"} delay={'100'} />
               <MenuItem value={"Experience"} delay={'200'} />
-              <MenuItem value={"Work"} delay={'300'} />
-              <MenuItem value={"Contact"} delay={'400'} />
+              <MenuItem value={"Work"} delay={'300'} inlineStyle={{marginLeft : "-5px"}}/>
+              <MenuItem value={"Contact"} delay={'400'}  inlineStyle={menuItemStyleContact(dimensions.windowPos.wwidth)}/>
               <button className='resumeBtn'>Resume</button>
             </> :
             <div className='menuIcon' onClick={menuIconClick} style={menuIconStyle(dimensions.windowPos.wwidth)}>
@@ -59,9 +57,7 @@ const Navbar = () => {
             </div>}
             {overlay && <MenuOverLay handleClose={closeFromChild}/>}
         </div>
-        
-
-
+        </div>
       </section>
     </>
   )

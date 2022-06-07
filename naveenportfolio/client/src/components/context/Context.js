@@ -75,7 +75,7 @@ useEffect(()=>{
   const threshold = 0;
   const [scrollDir, setScrollDir] = useState(scrollDirection.up);
 
-  const[isScrlling, setScrolling] = useState(true);
+  const[isScrlling, setScrolling] = useState(false);
 
   useEffect(() => {
 
