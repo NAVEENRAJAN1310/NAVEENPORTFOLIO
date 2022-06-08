@@ -6,8 +6,13 @@ import MenuItem from '../MenuItems/MenuItem'
 const MenuOverLay = (props) => {
 
     const btnStyle = {
-        animationName : "none",
+        animationName: "none",
         opacity: 1
+    }
+
+    const menuInlineStyle = {
+        top: "0",
+        transform: "translate(0,0)"
     }
 
     const clickClose = (e) => {
@@ -16,17 +21,21 @@ const MenuOverLay = (props) => {
 
     return (
         <>
-            <div id="menuOverlay"></div>
-            <div id="menuOverlayContainer">
-                <>
-                    <MenuItem value={"About"} animeName={"none"}/>
-                    <MenuItem value={"Experience"} animeName={"none"}/>
-                    <MenuItem value={"Work"} animeName={"none"}/>
-                    <MenuItem value={"Contact"} animeName={"none"}/>
-                    <button className='resumeBtn' style={btnStyle}> Resume</button>
-                </>
-                <div id='closeBtn' onClick={clickClose}>
-                    X
+            <div id="menuOverlay">
+                <div id="menuOverlayBackground">
+
+                </div>
+                <div id="menuOverlayContainer">
+                    <>
+                        <MenuItem value={"About"} animeName={"none"} inlineStyle={menuInlineStyle}/>
+                        <MenuItem value={"Experience"} animeName={"none"} inlineStyle={menuInlineStyle} />
+                        <MenuItem value={"Work"} animeName={"none"} inlineStyle={menuInlineStyle} />
+                        <MenuItem value={"Contact"} animeName={"none"} inlineStyle={menuInlineStyle} />
+                        <button className='resumeBtn' style={btnStyle}> Resume</button>
+                    </>
+                    <div id='closeBtn' onClick={clickClose}>
+                        X
+                    </div>
                 </div>
             </div>
         </>

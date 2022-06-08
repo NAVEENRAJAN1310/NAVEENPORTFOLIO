@@ -10,7 +10,7 @@ const MenuItem = (props) => {
 
     return (
         <>
-            <div className='menuItem' style={{...styles,...props.inlineStyle}}>
+            <div className='menuItem' style={{...styles,...props.inlineStyle}} >
                 <a href={"#" + props.value.toLowerCase()}>{props.value}</a>
             </div>
         </>
