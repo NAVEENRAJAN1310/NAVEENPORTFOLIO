@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { useWinWidthGreat, useWinWidthLesser, SetScroll } from '../../context/Context'
+import React from 'react'
+// import { useWinWidthGreat, useWinWidthLesser, SetScroll } from '../../context/Context'
 import "./MenuOverLay.css"
 import MenuItem from '../MenuItems/MenuItem'
 
@@ -27,10 +27,10 @@ const MenuOverLay = (props) => {
                 </div>
                 <div id="menuOverlayContainer">
                     <>
-                        <MenuItem value={"About"} animeName={"none"} inlineStyle={menuInlineStyle}/>
-                        <MenuItem value={"Experience"} animeName={"none"} inlineStyle={menuInlineStyle} />
-                        <MenuItem value={"Work"} animeName={"none"} inlineStyle={menuInlineStyle} />
-                        <MenuItem value={"Contact"} animeName={"none"} inlineStyle={menuInlineStyle} />
+                        <MenuItem value={"About"} animeName={"none"} inlineStyle={menuInlineStyle} handleMenuCLick = {clickClose}/>
+                        <MenuItem value={"Experience"} animeName={"none"} inlineStyle={menuInlineStyle} handleMenuCLick = {clickClose}/>
+                        <MenuItem value={"Work"} animeName={"none"} inlineStyle={menuInlineStyle} handleMenuCLick = {clickClose}/>
+                        <MenuItem value={"Contact"} animeName={"none"} inlineStyle={menuInlineStyle} handleMenuCLick = {clickClose}/>
                         <button className='resumeBtn' style={btnStyle}> Resume</button>
                     </>
                     <div id='closeBtn' onClick={clickClose}>
