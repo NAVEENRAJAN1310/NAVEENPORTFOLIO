@@ -1,0 +1,92 @@
+#about{
+    width: 100%;
+    height: 100vh;
+    background-color: yellowgreen;
+    padding:6% 13% ;
+}
+
+.aboutContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.aboutText{
+    width: 65%;
+    height: 100%;
+    /* background-color: darkgrey; */
+    
+}
+
+.aboutText > h2 {
+    font-size: 3rem;
+    font-family: 'Fira Sans', sans-serif;
+    position: relative;
+    margin-left: 2rem;
+}
+
+.aboutText > h2 > span {
+    display: inline-block;
+    position: absolute;
+    height: 1px;
+    width: 60%;
+    background-color: black;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15%;
+}
+
+.aboutText > p{
+    width:90%;
+    height: auto; 
+    margin-left: 2rem;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+
+.aboutImageContainer{
+    width: 35%;
+    height: 100%;
+    /* background-color: azure; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2%;
+}
+
+.aboutImageContainer > .imageContainer{
+    width: 100%;
+    aspect-ratio: 1/1;
+    position: relative;
+    z-index: 2;
+}
+
+.aboutImageContainer > .imageContainer > img {
+    width: 100%;
+    height: 100%;
+    /* background-color: beige; */
+    border-radius: 10px; 
+    /* z-index: 100; */
+}
+
+.aboutImageContainer > .imageContainer::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 3px solid red;
+    left: 20px;
+    top: 20px;
+    z-index: -1;
+    border-radius: 10px; 
+    transition: all .25s linear;
+}
+
+.aboutImageContainer:hover  .imageContainer::after {
+    left: 15px;
+    top: 15px;
+}

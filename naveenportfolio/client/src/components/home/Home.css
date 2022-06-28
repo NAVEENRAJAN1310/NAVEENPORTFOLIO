@@ -1,5 +1,67 @@
 #home{
     width: 100%;
     height: 100vh;
-    background-color: bisque;
+    background-color: crimson;
+    padding:6% 13% ;
+    
+}
+
+.homeContainer{
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 2%;
+}
+
+.homeContainer > h3 {
+    font-size: 1.5rem;
+    font-family: 'Fira Sans', sans-serif;
+    margin-bottom: 20px;
+}
+.homeContainer > h1,h2,span {
+    font-size: 6rem;
+    font-family: 'Secular One', sans-serif;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.homeContainer > h2 > span {
+    color: antiquewhite;
+    animation: buildAni 2s ease-in-out infinite;
+    position: relative;
+    margin-bottom: 0;
+    font-size: inherit;
+}
+
+@keyframes buildAni {
+
+    0%{
+        background: -webkit-linear-gradient(90deg, rgba(180,58,167,1) 6%, rgba(226,253,29,1) 49%, rgba(252,176,69,1) 90%);
+        -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    }
+
+    50%{
+        background: -webkit-linear-gradient(#eee, #333);
+        -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    }
+    100%{
+        background: -webkit-linear-gradient(90deg, rgba(180,58,167,1) 6%, rgba(226,253,29,1) 49%, rgba(252,176,69,1) 90%);
+        -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    }
+}
+
+
+.homeContainer > p {
+    font-size: 2rem;
+    width: 50%;
+    font-family: 'Fira Sans', sans-serif;
+    margin-bottom: 20px;
+    
 }

@@ -27,6 +27,7 @@ const MenuOverLay = (props) => {
                 </div>
                 <div id="menuOverlayContainer">
                     <>
+                        <MenuItem value={"Home"} animeName={"none"} inlineStyle={menuInlineStyle} handleMenuCLick = {clickClose}/>
                         <MenuItem value={"About"} animeName={"none"} inlineStyle={menuInlineStyle} handleMenuCLick = {clickClose}/>
                         <MenuItem value={"Experience"} animeName={"none"} inlineStyle={menuInlineStyle} handleMenuCLick = {clickClose}/>
                         <MenuItem value={"Work"} animeName={"none"} inlineStyle={menuInlineStyle} handleMenuCLick = {clickClose}/>
